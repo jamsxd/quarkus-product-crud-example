@@ -1,14 +1,13 @@
 package org.acme.jamsxd.application;
 
-
 import org.acme.jamsxd.domain.Product;
 import org.acme.jamsxd.domain.ProductService;
-import org.springframework.web.bind.annotation.RestController;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
-@RestController
+@Traced
 public class Controller implements Api {
     
     private final ProductService service;
@@ -28,7 +27,7 @@ public class Controller implements Api {
     }
 
     @Override
-    public Uni<Product> create(Product product) {
+    public Uni<Product> create(Product product) throws Exception {
         return service.saveProduct(product);
     }
 

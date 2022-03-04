@@ -16,7 +16,7 @@ public class Product {
     private String name;
     private String brand;
     private String size;
-    private double price;
+    private Double price;
     private String principalImage;
     private List<String> otherImages;
 }

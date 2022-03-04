@@ -1,17 +1,21 @@
 package org.acme.jamsxd.infrastructure.persistence;
 
+import javax.inject.Singleton;
+
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import org.acme.jamsxd.domain.Product;
 import org.acme.jamsxd.domain.ProductRepository;
 import org.bson.Document;
-import org.springframework.stereotype.Repository;
+import org.eclipse.microprofile.opentracing.Traced;
+
 import io.quarkus.mongodb.reactive.ReactiveMongoClient;
 import io.quarkus.mongodb.reactive.ReactiveMongoCollection;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
-@Repository
+@Traced
+@Singleton
 public class MongoRepository implements ProductRepository {
 
     private final ReactiveMongoClient client;
